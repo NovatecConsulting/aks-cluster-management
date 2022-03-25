@@ -29,3 +29,14 @@ controller:
 
   # List of plugins to install in addition to those listed in controller.installPlugins
   additionalPlugins: []
+
+  JCasC:
+    configScripts:
+      jenkins-casc-configs: |
+        jobs:
+          - script: >
+              job('example') {
+                steps {
+                  shell('echo Hello World!')
+                }
+              }
