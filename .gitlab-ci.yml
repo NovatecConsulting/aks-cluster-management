@@ -1,7 +1,9 @@
 image: caaqe/azure-image-builder:latest
 
-deploy1:
+deploy master:
   stage: deploy
+  only:
+    - master
   script:
     - az login --service-principal -u $ARM_CLIENT_ID -t $ARM_TENANT_ID -p $ARM_CLIENT_SECRET
     - az account set --subscription $ARM_SUBSCRIPTION_ID
