@@ -15,11 +15,11 @@ controller:
 
   # List of plugins to be install during Jenkins controller start
   installPlugins:
-    - kubernetes:1.31.3
-    - workflow-aggregator:2.6
-    - git:4.10.2
-    - configuration-as-code:1414.v878271fc496f
-    - job-dsl:1.78.3
+    - kubernetes:3580.v78271e5631dc
+    - workflow-aggregator:578.vf9a_f99755f4a_
+    - git:4.11.3
+    - configuration-as-code:1429.v09b_044a_c93de
+    - job-dsl:1.79
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: true
@@ -40,3 +40,10 @@ controller:
                   shell('echo Hello World!')
                 }
               }
+
+# Kubernetes Cloud and Pod Templates
+agent:
+  image: "devopstoolchainacr.azurecr.io/pipeline/jenkins-inbound-agent"
+  tag: "4.13-1"
+  # TODO Needs to be set according to https://github.com/jenkinsci/helm-charts/issues/432
+  command: "echo 'happy building'"
