@@ -35,10 +35,21 @@ controller:
       jenkins-casc-configs: |
         jobs:
           - script: >
-              job('example') {
-                steps {
-                  shell('echo Hello World!')
-                }
+              job('example-seed') {
+                  steps {
+                      scm {
+                          git {
+                              remote {
+                                  url('https://gitlab.novatec-gmbh.de/pa-aqe/devops-demo-toolchain/aks-cluster-management.git')
+                                  credentials('cra-gitlab')
+                              }
+                          }
+                      }
+                      dsl {
+                          external('jobdsl/*.groovy')
+                          removeAction('DELETE')
+                      }
+                  }
               }
 
 # Kubernetes Cloud and Pod Templates
